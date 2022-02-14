@@ -9,12 +9,13 @@ const MovieList = (props) => {
 
 
     useEffect(() => {
-        setMovies(mockData);
+        setMovies(mockData); // get data from api
     }, []);
 
     useEffect(() => {
-        if (movies.length !== 0) {
+        if (movies.length !== 0) { // check if the data from api is applied
             setDisplayMovies(movies.slice(indexs.head, indexs.tail + 1))
+            // only use slice of element from the array
         }
     }, [movies])
 
