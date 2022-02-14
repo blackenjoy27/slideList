@@ -21,22 +21,17 @@ const MovieList = (props) => {
 
     useEffect(() => {
         if (moves.length !== 0) {
-            const current = moves[0];
+            const current = moves[moves.length - 1];
             if (current === "previous") {
-                const [f, s, t] = displayMovies;
+                const [f, s, t] = displayMovies; // f=first, s=second, t=third
                 setDisplayMovies([movies[indexs.head], f, s, t])
 
             } else if (current === "next") {
-                const [f, ...rest] = displayMovies;
+                const [f, ...rest] = displayMovies; // we only use ...rest 
                 setDisplayMovies([...rest, movies[indexs.tail]])
             }
-            setMoves([]);
         }
     }, [moves])
-
-    useEffect(() => {
-        console.log(indexs);
-    }, [indexs]);
 
     const handleNextClick = () => {
         if (indexs.tail === movies.length - 1) {
